@@ -32,6 +32,24 @@
             },
             "defaultValue": "test-projectfgh"
         },
+        "pipNewOrExisting": {
+            "type": "string",
+            "metadata": {
+                "description": "Is the Public IP New or Existing?"
+            },
+            "defaultValue": "new",
+            "allowedValues": [
+                "new",
+                "existing"
+            ]
+        },
+        "pipExistingResourceGroup": {
+            "type": "string",
+            "metadata": {
+                "description": "Specifiy the existing Public IP Resource Group. Leave blank if creating a new Public IP"
+            },
+            "defaultValue": ""
+        },
         "storageAccountName0": {
             "type": "string",
             "metadata": {
@@ -172,7 +190,9 @@
             }
         },
         "pip-settings": {
-            "dnsName": "[parameters('publicIPDnsName')]"
+            "dnsName": "[parameters('publicIPDnsName')]",
+            "newOrExisting": "[parameters('pipNewOrExisting')]",
+            "existingRg": "[parameters('pipExistingResourceGroup')]"
         },
         "vm-settings": {
             "adminUserName": "[parameters('vmAdminUserName')]",
